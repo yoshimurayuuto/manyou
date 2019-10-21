@@ -1,24 +1,30 @@
-# README
+userモデル:
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+class User < ApplicationRecord
+end
 
-Things you may want to cover:
+userスキーマ
+class CreateUsers < ActiveRecord::Migration[5.2]
+  def change
+    create_table :users do |t|
+      t.string :name
+      t.string :email
+      t.string :password_digest
+      t.timestamps
+    end
+  end
+end
 
-* Ruby version
+contentモデル
+class Content < ApplicationRecord
+end
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+contentスキーマ
+class CreateContents < ActiveRecord::Migration[5.2]
+  def change
+    create_table :contents do |t|
+      t.text_area :content
+      t.timestamps
+    end
+  end
+end
