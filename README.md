@@ -8,9 +8,9 @@
 
   |data-type|column|
   |:--|--
-  |t.string |name|
-  |t.string |email|
-  |t.string |password_digest|
+  |string |name|
+  |string |email|
+  |string |password_digest|
 
 
 
@@ -22,5 +22,5 @@
 
   |data-type|column|
   |:--|--
-  |t.string |name|
-  |t.text |content|
+  |string |name|
+  |text |content|
