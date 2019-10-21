@@ -14,13 +14,13 @@
 
 
 
-#contentモデル
+#taskモデル
   class Task < ApplicationRecord
   end
 
-#contentスキーマ
+#taskスキーマ
 
-  |data-type|task|
+  |data-type|column|
   |:--|--
   |t.string |name|
-  |t.text_area |content|
+  |t.text |content|
