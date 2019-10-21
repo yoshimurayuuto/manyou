@@ -15,11 +15,12 @@
 
 
 #contentモデル
-  class Content < ApplicationRecord
+  class Task < ApplicationRecord
   end
 
 #contentスキーマ
 
-  |data-type|column|
+  |data-type|task|
   |:--|--
+  |t.string |name|
   |t.text_area |content|
