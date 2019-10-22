@@ -42,7 +42,6 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'spring-commands-rspec'
   gem 'rspec-rails'
-  gem 'factory_bot_rails'
   gem 'faker'
   gem 'capybara', '~> 2.13'
   gem 'database_cleaner'
