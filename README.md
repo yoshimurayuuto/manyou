@@ -24,3 +24,10 @@
   |:--|--
   |string |name|
   |text |content|
+
+
+  rails assets:precompile RAILS_ENV=production
+  git add -A
+  git commit -m "test commit"
+  git push heroku master
+  heroku run rails db:migrate

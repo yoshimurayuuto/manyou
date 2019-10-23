@@ -10,8 +10,12 @@ RSpec.feature "タスク管理機能", type: :feature do
   # end
   background do
      # あらかじめタスク一覧のテストで使用するためのタスクを二つ作成する
-     FactoryBot.create(:task)
-     FactoryBot.create(:second_task)
+     # FactoryBot.create(:task)
+     # FactoryBot.create(:second_task)
+     @task = FactoryBot.create(:task)
+
+     @task2 = FactoryBot.create(:second_task)
+
    end
   # scenario（itのalias）の中に、確認したい各項目のテストの処理を書きます。
   scenario "タスク一覧のテスト" do
@@ -19,46 +23,60 @@ RSpec.feature "タスク管理機能", type: :feature do
 
     # tasks_pathにvisitする（タスク一覧ページに遷移する）
     visit tasks_path
-    save_and_open_page
+    # save_and_open_page
 
 
     # visitした（到着した）expect(page)に（タスク一覧ページに）「testtesttest」「samplesample」という文字列が
     # have_contentされているか？（含まれているか？）ということをexpectする（確認・期待する）テストを書いている
+    expect(page).to have_content 'test_task_01'
     expect(page).to have_content 'testtesttest'
-    expect(page).to have_content 'samplesample'
   end
+
   scenario "タスク作成のテスト" do
-    @task = Task.create!(name: 'test_task_01', content: 'testtesttest')
-    @task = Task.create!(name: 'test_task_02', content: 'samplesample')
+    task = Task.new(name: 'test_task_99', content: 'testtesttesta')
 
     visit new_task_path
 
-
-    fill_in "task_name", with: @task.name
-    fill_in "task_content", with: @task.content
-
+    fill_in "task_name", with: 'タスク'
+    fill_in "task_content", with: 'コンテントテスト'
     click_button "登録"
 
-    expect(page).to have_content 'ブログ'
-    expect(page).to have_content 'samplesample'
+    expect(page).to have_content 'タスク'
+    expect(page).to have_content 'コンテントテスト'
   end
 
   scenario "タスク詳細のテスト" do
-    @task = Task.create!(name: 'test_task_03', content: 'testtesttestaaa')
-    visit task_path(@task)
-    save_and_open_page
-    expect(page).to have_content "ブログ詳細画面"
-    expect(page).to have_content 'test_task_03'
-    expect(page).to have_content 'testtesttestaaa'
+    # @task = Task.create!(name: 'test_task_03', content: 'testtesttestaaa')
+    # visit task_path(@task)
+    # save_and_open_page
+    # expect(page).to have_content "ブログ詳細画面"
+    #
+    # expect(page).to have_content 'test_task_03'
+    # expect(page).to have_content 'testtesttestaaa'
+    visit task_path(id: @task.id)
+    expect(page).to have_content 'test_task_01'
+    expect(page).to have_content 'testtesttest'
   end
 
-  it "is invalid without a title" do
+  it "is invalid without a name" do
     task = Task.new(name: nil)
     task.valid?
-    expect(task.errors[:name]).to include("can't be blank")
+    expect(task.errors[:name]).to include("を入力してください")
   end
 
   scenario "タスクが作成日時の降順に並んでいるかのテスト" do
+    Task.create(id: 1, name: '1', content: '1', created_at: Time.current + 1.days)
+    Task.create(id: 2, name: '2', content: '2', created_at: Time.current + 2.days)
+    Task.create(id: 3, name: '3', content: '3', created_at: Time.current + 3.days)
+    Task.create(id: 4, name: '4', content: '4', created_at: Time.current + 4.days)
+    visit tasks_path
+    save_and_open_page
+    # task = all('.task_list')
+    # task_0 = task[0]
+    # expect(task_0).to have_content "3"
+    # expect(task_0).to have_content "4"
+    
       # ここにテスト内容を記載する
+
   end
 end

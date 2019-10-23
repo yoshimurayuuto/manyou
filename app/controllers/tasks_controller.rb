@@ -9,17 +9,21 @@ class TasksController < ApplicationController
   end
 
   def create
-    Task.create(task_params)
-    redirect_to tasks_path, notice: "ブログを作成しました！"
+    @task = Task.new(task_params)
+    if @task.save
+      redirect_to tasks_path, notice: "ブログを作成しました！"
+    else
+    # 入力フォームを再描画します。
+      render :new
+    end
   end
   def show
-    @task = Task.find(params[:id])
+
   end
   def edit
-    @task = Task.find(params[:id])
+
   end
   def update
-    @task = Task.find(params[:id])
     if @task.update(task_params)
       redirect_to tasks_path, notice: "ブログを編集しました！"
     else
@@ -37,5 +41,9 @@ end
   end
   def task_params
     params.require(:task).permit(:name, :content)
+  end
+
+  def set_task
+    @task = Task.find(params[:id])
   end
 end

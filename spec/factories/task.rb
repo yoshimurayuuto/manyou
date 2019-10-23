@@ -6,12 +6,14 @@ FactoryBot.define do
   factory :task, class: Task do
     name { 'test_task_01' }
     content { 'testtesttest' }
+    # created_at Time.current
   end
 
   # 作成するテストデータの名前を「second_task」とします
   # （存在しないクラス名の名前をつける場合、オプションで「このクラスのテストデータにしてください」と指定します）
   factory :second_task, class: Task do
-    name { 'test_task_02' }
+    name { 'testtask_02' }
     content { 'samplesample' }
+  #   created_at { '2019-10-23 11:51:39 +0900'}
   end
 end
