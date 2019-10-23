@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 2019_10_22_101444) do
   create_table "tasks", force: :cascade do |t|
     t.string "name"
     t.text "content"
+    t.string "Expiration_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_tasks_on_name", unique: true

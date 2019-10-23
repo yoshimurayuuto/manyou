@@ -3,6 +3,7 @@ class CreateTasks < ActiveRecord::Migration[5.2]
     create_table :tasks do |t|
       t.string :name
       t.text :content
+      t.string "Expiration_date"
       t.timestamps
     end
   end

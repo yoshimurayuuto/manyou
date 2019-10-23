@@ -1,4 +1,4 @@
-# このrequireで、Capybaraなどの、Feature Specに必要な機能を使用可能な状態にしています
+  # このrequireで、Capybaraなどの、Feature Specに必要な機能を使用可能な状態にしています
 require 'rails_helper'
 
 # このRSpec.featureの右側に、「タスク管理機能」のように、テスト項目の名称を書きます（do ~ endでグループ化されています）
@@ -58,11 +58,7 @@ RSpec.feature "タスク管理機能", type: :feature do
     expect(page).to have_content 'testtesttest'
   end
 
-  it "is invalid without a name" do
-    task = Task.new(name: nil)
-    task.valid?
-    expect(task.errors[:name]).to include("を入力してください")
-  end
+
 
   scenario "タスクが作成日時の降順に並んでいるかのテスト" do
     Task.create(id: 1, name: '1', content: '1', created_at: Time.current + 1.days)
@@ -75,7 +71,7 @@ RSpec.feature "タスク管理機能", type: :feature do
     # task_0 = task[0]
     # expect(task_0).to have_content "3"
     # expect(task_0).to have_content "4"
-    
+
       # ここにテスト内容を記載する
 
   end
