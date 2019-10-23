@@ -13,7 +13,6 @@ class TasksController < ApplicationController
     if @task.save
       redirect_to tasks_path, notice: "ブログを作成しました！"
     else
-    # 入力フォームを再描画します。
       render :new
     end
   end
