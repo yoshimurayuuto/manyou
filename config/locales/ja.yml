@@ -198,6 +198,13 @@ ja:
       last_word_connector: "、"
       two_words_connector: "、"
       words_connector: "、"
+  enums:
+  task:
+    status_id:
+      undefined: "未設定"
+      untouched: "未着手"
+      in_progress: "作業中"
+      done: "完了"
   time:
     am: 午前
     formats:

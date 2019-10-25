@@ -10,18 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_22_101444) do
+ActiveRecord::Schema.define(version: 2019_10_24_072940) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "contents", force: :cascade do |t|
+    t.string "word"
+    t.string "reading"
+  end
+
   create_table "tasks", force: :cascade do |t|
     t.string "name"
+    t.string "title"
     t.text "content"
-    t.string "Expiration_date"
+    t.string "expiration_date"
+    t.string "status", default: "未着手", null: false
+    t.string "priority", default: "低", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["name"], name: "index_tasks_on_name", unique: true
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "password_digest"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

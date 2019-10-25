@@ -1,17 +1,42 @@
 <h1>ブログ一覧</h1>
+<header>
+<h2>ホーム</h2>
+<div class = "post"><%= link_to 'New Task', new_task_path %></div>
+
+
+<%= search_form_for @q do |f| %>
+  <%= f.label :title_cont, 'Search title:' %>
+  <%= f.text_field :title_cont %>
+  <br />
+  <%= f.label :status, 'Search status' %>
+  <%= f.select :status_cont, [['未完了', '未完了'], ['未着手', '未着手'], ['完了', '完了']], {include_blank: '選択してください'}%>
+  <br />
+  <div>
+    <%= f.submit '検索する' %>
+  </div>
+<% end %>
+</header>
 <p><%= notice %></p>
 <table>
   <tr>
+    <th>タイトル</th>
     <th>名前</th>
     <th>内容</th>
     <th>作成日</th>
+    <th>終了期限</th>
+    <th>タスク管理</th>
+    <th>優先順位</th>
   </tr>
 
 <% @tasks.each do |task| %>
   <tr>
+    <td><%= task.title %></td>
     <td><%= task.name %></td>
     <td><%= task.content %></td>
     <td><%= task.created_at %></td>
+    <td><%= task.expiration_date %></td>
+    <td><%= task.status %></td>
+    <td><%= task.priority %></td>
     <td><%= link_to '詳細を確認する', task_path(task.id) %></td>
     <td><%= link_to "ブログを編集する", edit_task_path(task.id) %></td>
     <td><%= link_to 'ブログを削除する', task_path(task.id), method: :delete %></td>
@@ -19,5 +44,5 @@
 <% end %>
 </table>
 
-<%= link_to '新しくブログを投稿する', new_task_path %>
+<%= link_to 'タスクを登録する', new_task_path %>
 <%= link_to "終了期限でソートする", tasks_path(sort_expired: "true") %>
