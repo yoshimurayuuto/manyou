@@ -1,26 +1,43 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: [:show, :edit, :update, :destroy, :top]
+  before_action :set_task, only: [:show, :edit, :update, :destroy]
   # def top
   #   @contents = Content.all.order(created_at: :desc)
   #   @contents = Content.page(params[:page]).per(20)
   # end
+  # def search
+  #   @tasks = Task.search(params[:q])
+  #   @tasks = @tasks.page(params[:page]).page(params[:page])
+  #   render "index"
+  # end
 
-  # def index
+  def index
+
+    @tasks = Task.all.page(params[:page])
+  
     # @search = Task.search(params[:q])
-    # if params[:q]
-    #   @search = Task.search(params[:q]) # この行を追加
-    #   @tasks = @search.all(distinct: true)
-    # elsif
-    # params[:sort_expired]
-    # @tasks = Task.all.order(expiration_date: :desc)
-    # end
-    # @tasks = Task.all.order(expiration_date: :desc)
+    @q = Task.ransack(params[:q])
+    @tasks = @q.result(distinct: true).page(params[:page])
 
-    def index
-      @q = Task.ransack(params[:q])
-      @tasks = @q.result(distinct: true)
+      # @search = Task.search(params[:q]) # この行を追加
+      # @tasks = @search.all(distinct: true)
+    # @tasks = Task.page(params[:page])
+    if  params[:sort_expired]
+
+      @tasks = Task.order("expiration_date").page(params[:page])
 
     end
+
+    if params[:priority]
+
+      @tasks = Task.order("priority desc").page(params[:page])
+
+    # @tasks = Task.all.order(expiration_date: :desc)
+    end
+    # def index
+      # @q = Task.ransack(params[:q])
+      # @tasks = @q.result(distinct: true)
+    # @tasks = Task.page(params[:page])
+  end
 
       # @q = Task.ransack(params[:q])
       # @tasks = @q.result(distinct: true)
@@ -31,7 +48,7 @@ class TasksController < ApplicationController
       # # else
       # #   @tasks = Task.all
       # # end
-      # # @tasks = Task.page(params[:page])
+
   # end
 
 
@@ -61,7 +78,7 @@ class TasksController < ApplicationController
     end
   end
   def show
-
+    @task = Task.find(params[:id])
   end
   def edit
 

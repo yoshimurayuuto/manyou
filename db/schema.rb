@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 2019_10_24_072940) do
     t.text "content"
     t.string "expiration_date"
     t.string "status", default: "未着手", null: false
-    t.string "priority", default: "低", null: false
+    t.integer "priority"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

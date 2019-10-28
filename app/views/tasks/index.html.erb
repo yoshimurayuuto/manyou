@@ -2,8 +2,8 @@
 <header>
 <h2>ホーム</h2>
 <div class = "post"><%= link_to 'New Task', new_task_path %></div>
-
-
+    
+<%= paginate @tasks %>
 <%= search_form_for @q do |f| %>
   <%= f.label :title_cont, 'Search title:' %>
   <%= f.text_field :title_cont %>
@@ -12,6 +12,8 @@
   <%= f.select :status_cont, [['未完了', '未完了'], ['未着手', '未着手'], ['完了', '完了']], {include_blank: '選択してください'}%>
   <br />
   <div>
+
+
     <%= f.submit '検索する' %>
   </div>
 <% end %>
@@ -33,7 +35,7 @@
     <td><%= task.title %></td>
     <td><%= task.name %></td>
     <td><%= task.content %></td>
-    <td><%= task.created_at %></td>
+    <td><%= task.created_at.strftime("%Y-%m-%d%H:%M") %></td>
     <td><%= task.expiration_date %></td>
     <td><%= task.status %></td>
     <td><%= task.priority %></td>
@@ -46,3 +48,4 @@
 
 <%= link_to 'タスクを登録する', new_task_path %>
 <%= link_to "終了期限でソートする", tasks_path(sort_expired: "true") %>
+<%= link_to "優先順位でソートする", tasks_path(priority: "true") %>

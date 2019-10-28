@@ -59,3 +59,11 @@
   </ul>
 
 <%= paginate @contents %>
+
+
+
+
+
+
+
+<%= form.select :priority, ["高","中","低"], class: 'Task' %>

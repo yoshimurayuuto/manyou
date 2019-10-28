@@ -6,7 +6,7 @@ class CreateTasks < ActiveRecord::Migration[5.2]
       t.text :content
       t.string :expiration_date
       t.string :status, default: "未着手", null: false
-      t.string :priority, default: "低", null: false
+      t.integer :priority
       t.timestamps
     end
   end

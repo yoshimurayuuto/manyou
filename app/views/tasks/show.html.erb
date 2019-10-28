@@ -4,5 +4,5 @@
 <p>内容: <%= @task.content %></p>
 <p>作成日: <%= @task.created_at %></p>
 <p>終了期限: <%= @task.expiration_date %></p>
-<p>タスク管理: <%= Task.getStatus(@task) %></p>
-<p>優先順位: <%= Task.getPriority(@task) %></p>
+<p>タスク管理: <%= @task.status %></p>
+<p>優先順位: <%= @task.priority %></p>

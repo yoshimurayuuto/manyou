@@ -16,3 +16,6 @@ end
 10.times do |n|
  Task.create(name: "立花", title: "おっさん",content: "N国", status: "未完了",  priority: "低")
 end
+10.times do |n|
+ Task.create(name: "立花", title: "おっさん",content: "N国", status: "未完了",  priority: "低", expiration_date: "2")
+end

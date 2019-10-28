@@ -4,10 +4,20 @@ class Task < ApplicationRecord
   validates :content, presence: true
   validates :status, presence: true
   validates :priority, presence: true
-  paginates_per 10
-  def self.search(search)
-    search ? where('title LIKE ?', "%#{search}%") : all
-  end
+  paginates_per 4
+  # enum priority:{低: 0, 中: 1, 高: 2 }
+  # scope :custom_scope, -> (boolean=true) {
+  #   joins(:task).where(active: boolean)
+  # }
+
+  private
+
+  # for ransack scope
+  # def self.ransackable_scopes(auth_object=nil)
+  #   %i(custom_scope)
+  # end
+  enum priority: { 低: 0, 中: 1, 高: 2}
+  # enum status:{attack: 0,spells:1,defend:2,item:3, abilities:4}
   # 例
   # Task.getStatus(@task)
 
@@ -26,15 +36,15 @@ class Task < ApplicationRecord
   # end
 
   # 例
-  # # Task.getPriority(@task)
-  # def self.getPriority(task)
-  #   return "低" if task.nil?
-  #   if task.priority == 0
-  #     "低"
-  #   elsif task.priority == 1
-  #     "中"
-  #   else task.priority == 2
-  #     "高"
-  #   end
-  # end
+  # Task.getPriority(task)
+  def self.getPriority(task)
+    return "低" if task.nil?
+    if task.priority == 0
+      "低"
+    elsif task.priority == 1
+      "中"
+    else task.priority == 2
+      "高"
+    end
+  end
 end
