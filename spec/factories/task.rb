@@ -6,6 +6,10 @@ FactoryBot.define do
   factory :task, class: Task do
     name { 'test_task_01' }
     content { 'testtesttest' }
+    title { 'testtesttest' }
+    status{ 'testtesttest' }
+    priority { 1 }
+    expiration_date {Time.current}
     # created_at Time.current
   end
 
@@ -14,6 +18,10 @@ FactoryBot.define do
   factory :second_task, class: Task do
     name { 'testtask_02' }
     content { 'samplesample' }
+    title { 'testtesttest' }
+    status{ 'testtesttest' }
+    priority { 1 }
+    expiration_date {Time.current}
   #   created_at { '2019-10-23 11:51:39 +0900'}
   end
 end
