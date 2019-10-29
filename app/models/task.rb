@@ -1,5 +1,5 @@
 class Task < ApplicationRecord
-  # validates :name, presence: true, uniqueness: { case_sensitive: false }
+
   validates :title, presence: true
   validates :content, presence: true
   validates :status, presence: true
@@ -15,10 +15,7 @@ class Task < ApplicationRecord
   private
 
   enum priority: { 低: 0, 中: 1, 高: 2}
-  # enum status: { 未完了: 0, 未着手: 1 , 完了: 2 }
 
-  # 例
-  # Task.getPriority(task)
   def self.getPriority(task)
     return "低" if task.nil?
     if task.priority == 0

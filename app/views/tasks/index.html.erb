@@ -32,7 +32,7 @@
   <% @tasks.each do |task| %>
     <tr class="a">
       <td><%= task.title %></td>
-      
+
       <td><%= task.content %></td>
       <td><%= task.created_at.to_s(:datetime_jp) %></td>
       <td><%= task.expiration_date.strftime("%Y年%m月%d日") %></td>
@@ -47,7 +47,7 @@
 </div>
 <%= link_to 'タスクを登録する', new_task_path %>
 <%= link_to "終了期限でソートする", tasks_path(sort_expired: "true") %>
-<%= link_to "優先順位でソートする", tasks_path(priority: "true") %>
+<%= link_to "優先順位でソートする", tasks_path(priority: "true"), id: "sort_priority"%>
 </html>
 
 <!-- <p class="btn btn-info">
