@@ -21,7 +21,6 @@ ActiveRecord::Schema.define(version: 2019_10_24_072940) do
   end
 
   create_table "tasks", force: :cascade do |t|
-    t.string "name"
     t.string "title"
     t.text "content"
     t.datetime "expiration_date"

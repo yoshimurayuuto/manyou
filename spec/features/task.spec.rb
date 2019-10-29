@@ -33,15 +33,15 @@ RSpec.feature "タスク管理機能", type: :feature do
   end
 
   scenario "タスク作成のテスト" do
-    task = Task.new(name: 'test_task_99', content: 'testtesttesta', title: "1", priority: 1, expiration_date: 1964,)
+    task = Task.new(content: 'testtesttesta', title: "1", priority: 1, expiration_date: 1964,)
 
     visit new_task_path
 
-    fill_in "task_name", with: 'タスク'
+
     fill_in "task_content", with: 'みなさん、こんにちは'
     click_button "登録"
 
-    expect(page).to have_content 'タスク'
+    
     expect(page).to have_content 'みなさん、こんにちは'
   end
 

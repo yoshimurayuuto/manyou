@@ -6,7 +6,7 @@
     # fill_in "task_title", with: '9'
     # fill_in "task_status", with: '1'
     before do
-      @task = Task.create(name: "a", title: "9", status: "1", content: "4", priority: 1)
+      @task = Task.create(title: "9", status: "1", content: "4", priority: 1)
       # @task2 = Task.create(name: "a", title: "9", status: "1", content: "4", priority: 1)
     end
 
