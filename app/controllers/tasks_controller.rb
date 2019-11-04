@@ -7,6 +7,7 @@ class TasksController < ApplicationController
       @user = User.find(current_user.id)
       @users = User.page(params[:page])
       @tasks = Task.where(user_id: current_user.id).page(params[:page])
+      @tasks = @tasks.joins(:labels).where(labels: { id: params[:label_id] }) if params[:label_id].present?
       if  params[:sort_expired]
         @tasks = Task.order("expiration_date").page(params[:page])
       end
@@ -68,7 +69,7 @@ class TasksController < ApplicationController
   end
 
   def task_params
-    params.require(:task).permit(:title, :content, :expiration_date, :status, :priority)
+    params.require(:task).permit(:title, { label_ids: [] }, :content, :expiration_date, :status, :priority)
   end
 
   def search_params

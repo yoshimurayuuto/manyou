@@ -21,8 +21,6 @@ describe 'Tasks' do
   context "優先順位でソートする" do
     it "高中低で適切に並び替えられる" do
       visit tasks_path
-
-
     page.find("#sort_priority").click
       expect(page).to have_text /.*高.*中.*低.*/
     end
@@ -40,6 +38,14 @@ describe 'Tasks' do
         visit tasks_path
         page.find("#task_status").click
         expect(page).to have_text /.*完了.*未完了.*未着手.*/
+      end
+    end
+
+    context "タスクラベル" do
+      it "ラベル実装" do
+        visit new_task_path
+        click_button "登録"
+        expect(page).to have_content '登録する'
       end
 
     end

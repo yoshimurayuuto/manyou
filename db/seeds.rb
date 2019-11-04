@@ -21,7 +21,7 @@
 # end
 
 User.create!(name:  "管理者",
-            email: "admin@example.jp",
-            password:  "admin@example.jp",
-            password_confirmation: "admin@example.jp",
+            email: "000@gmail.com",
+            password:  "000@gmail.com",
+            password_confirmation: "000@gmail.com",
             admin: true)

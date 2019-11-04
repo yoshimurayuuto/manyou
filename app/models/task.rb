@@ -5,6 +5,8 @@ class Task < ApplicationRecord
   validates :status, presence: true
   validates :priority, presence: true
   validates :expiration_date, presence: true
+  has_many :labellings, dependent: :destroy
+  has_many :labels, through: :labellings
   paginates_per 5
   belongs_to :user
     scope :search_with_title, -> (title) {where("title LIKE ?", "%#{title}%")}

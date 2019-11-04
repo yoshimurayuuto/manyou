@@ -5,3 +5,7 @@
 <p>終了期限: <%= @task.expiration_date %></p>
 <p>タスク管理: <%= @task.status %></p>
 <p>優先順位: <%= @task.priority %></p>
+
+<% @task.labels.each do |label| %>
+<p>ラベル一覧: <%= label.name %></p>
+<% end %>
