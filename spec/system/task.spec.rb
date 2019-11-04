@@ -18,7 +18,7 @@ describe 'Tasks' do
 
   # task = Task.new(title: "9", status: 1)
   # context "search" do
-  context "優先順位でソートする'" do
+  context "優先順位でソートする" do
     it "高中低で適切に並び替えられる" do
       visit tasks_path
 

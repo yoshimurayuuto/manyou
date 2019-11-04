@@ -14,18 +14,20 @@
 <%# <%= form.select :status, [['未完了', '未完了'], ['未着手', '未着手'], ['完了', '完了']], {include_blank: 'タスク管理'}, class: 'Task' %> %>
 <%= form.select :status, ["未完了","未着手","完了"], {include_blank: 'タスク管理'}, class: 'Task' %>
 <%= form.select :priority, ["高","中","低"], {include_blank: '優先順位'}, class: 'Task' %>
-  <div class="task_title">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </div>
 
-  <div class="task_content">
-    <%= form.label :content %>
-    <%= form.text_field :content %>
-  </div>
-  <div class="task_expiration_date">
-    <%= form.label :expiration_date %>
-    <%= form.date_select :expiration_date %>
-  </div>
-  <%= form.submit %>
+    <div class="task_title">
+      <%= form.label :title %>
+      <%= form.text_field :title %>
+    </div>
+
+    <div class="task_content">
+      <%= form.label :content %>
+      <%= form.text_field :content %>
+    </div>
+    <div class="task_expiration_date">
+      <%= form.label :expiration_date %>
+      <%= form.date_select :expiration_date %>
+    </div>
+    <%= form.submit %>
+
 <% end %>

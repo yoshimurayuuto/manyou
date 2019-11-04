@@ -1,0 +1,25 @@
+<h1>管理画面のユーザー</h1>
+<%= link_to 'New Task', new_admin_user_path %>
+
+
+<div class="col-5 ml-3">
+  <table class="table table-bordered">
+    <tr class="a">
+      <th>名前</th>
+      <th>メールアドレス</th>
+      <th>持っているタスクの数</th>
+    </tr>
+
+
+    <% @users.includes(:tasks).each do |user| %>
+      <tr class="a">
+        <td><%= user.name %></td>
+        <td><%= user.email %></td>
+        <td><%= user.tasks.count %></td>
+        <td><%= link_to '詳細を確認する', admin_user_path(user.id) %></td>
+        <td><%= link_to "編集する", edit_admin_user_path(user.id), data: { confirm: '本当に編集していいですか？' } %></td>
+        <td><%= link_to 'ユーザーを削除する', admin_user_path(user.id), method: :delete ,data: { confirm: '本当に削除していいですか？' } %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>

@@ -7,15 +7,21 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-10.times do |n|
- Task.create(title: "おっさん",content: "N国", status: "完了",  priority: "高")
-end
-10.times do |n|
- Task.create(title: "おっさん",content: "N国", status: "未着手",  priority: "低")
-end
-10.times do |n|
- Task.create(title: "おっさん",content: "N国", status: "未完了",  priority: "低")
-end
-10.times do |n|
- Task.create(title: "おっさん",content: "N国", status: "未完了",  priority: "低", expiration_date: "2")
-end
+# 10.times do |n|
+#  Task.create(title: "おっさん",content: "N国", status: "完了",  priority: "高")
+# end
+# 10.times do |n|
+#  Task.create(title: "おっさん",content: "N国", status: "未着手",  priority: "低")
+# end
+# 10.times do |n|
+#  Task.create(title: "おっさん",content: "N国", status: "未完了",  priority: "低")
+# end
+# 10.times do |n|
+#  Task.create(title: "おっさん",content: "N国", status: "未完了",  priority: "低", expiration_date: "2")
+# end
+
+User.create!(name:  "管理者",
+            email: "admin@example.jp",
+            password:  "admin@example.jp",
+            password_confirmation: "admin@example.jp",
+            admin: true)

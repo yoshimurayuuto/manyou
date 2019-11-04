@@ -1,0 +1,13 @@
+<h1>ユーザー詳細画面</h1>
+<p>名前: <%= @user.name %></p>
+<div class="col-5 ml-3">
+  <table class="table table-bordered">
+
+
+  <tbody class = "a">
+      <tr class = "a"><th>作成したタスクのタイトル:</th><th>作成したタスクのステータス:</th><th>作成したタスクの内容:</th><th>作成したタスクの優先順位:</th><th>作成したタスクの終了期限:</th><th>作成したタスクの日付:</th></tr>
+      <% @user.tasks.each do |user| %>
+          <tr class = "a"><td><%= user.title %></td><td><%= user.status %></td><td><%= user.content %></td><td><%= user.priority %></td><td><%= user.expiration_date.strftime("%Y年%m月%d日") %></td><td><%= user.created_at.to_s(:datetime_jp) %></tr>
+      <% end %>
+  </tbody>
+</table>
