@@ -21,7 +21,7 @@ describe 'Users' do
   scenario 'ログインする' do
     visit root_path
     # ログインフォームにEmailとパスワードを入力する
-    fill_in 'Email', with: 'f000@gmail.com'
+    fill_in 'Email', with: '000@gmail.com'
     fill_in 'Password', with: '000@gmail.com'
     # ログインボタンをクリックする
     click_on 'Log in'

@@ -10,43 +10,46 @@ RSpec.feature "タスク管理機能", type: :feature do
      # FactoryBot.create(:task)
      # FactoryBot.create(:second_task)
      @task = FactoryBot.create(:task)
-
      @task2 = FactoryBot.create(:second_task)
-
+     User.create(name: "000@gmail.com", email: "000@gmail.com", password: "000@gmail.com", password_confirmation: "000@gmail.com")
    end
   # scenario（itのalias）の中に、確認したい各項目のテストの処理を書きます。
   scenario "タスク一覧のテスト" do
-
-
-    # tasks_pathにvisitする（タスク一覧ページに遷移する）
     visit tasks_path
     # save_and_open_page
+    fill_in 'Email', with: '000@gmail.com'
+    fill_in 'Password', with: '000@gmail.com'
+    # ログインボタンをクリックする
+    click_on 'Log in'
+    # tasks_pathにvisitする（タスク一覧ページに遷移する）
 
-
+    visit tasks_path
     # visitした（到着した）expect(page)に（タスク一覧ページに）「testtesttest」「samplesample」という文字列が
     # have_contentされているか？（含まれているか？）ということをexpectする（確認・期待する）テストを書いている
-    expect(page).to have_content 'test_task_01'
-    expect(page).to have_content 'testtesttest'
+    expect(page).to have_content '名前'
+    expect(page).to have_content 'タイトル'
   end
 
   scenario "タスク作成のテスト" do
-    task = Task.new(content: 'testtesttesta', title: "1", priority: 1, expiration_date: 1964,)
-
+    visit new_session_path
+    save_and_open_page
+    fill_in 'Email', with: '000@gmail.com'
+    fill_in 'Password', with: '000@gmail.com'
+    click_on 'Log in'
     visit new_task_path
-
-
-    fill_in "task_content", with: 'みなさん、こんにちは'
-    click_button "登録"
-
-
-    expect(page).to have_content 'みなさん、こんにちは'
+    task = Task.create(title: "1", content: "1", expiration_date: 1964)
+    click_on "登録する"
   end
 
   scenario "タスク詳細のテスト" do
-
+    visit new_session_path
+    save_and_open_page
+    fill_in 'Email', with: '000@gmail.com'
+    fill_in 'Password', with: '000@gmail.com'
+    click_on 'Log in'
     visit task_path(id: @task.id)
-    expect(page).to have_content 'test_task_01'
-    expect(page).to have_content 'testtesttest'
+    expect(page).to have_content 'ブログ詳細画面'
+    expect(page).to have_content 'ブログ詳細画面'
   end
 
 
