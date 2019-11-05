@@ -8,7 +8,7 @@ class Task < ApplicationRecord
   has_many :labellings, dependent: :destroy
   has_many :labels, through: :labellings
   paginates_per 5
-  belongs_to :user
+  belongs_to :user, optional: true  
     scope :search_with_title, -> (title) {where("title LIKE ?", "%#{title}%")}
 
     scope :search_with_status, -> (status) {where(status: status)}
