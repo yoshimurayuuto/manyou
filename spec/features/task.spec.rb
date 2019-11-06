@@ -15,18 +15,15 @@ RSpec.feature "タスク管理機能", type: :feature do
    end
   # scenario（itのalias）の中に、確認したい各項目のテストの処理を書きます。
   scenario "タスク一覧のテスト" do
-    visit tasks_path
+    visit new_session_path
     # save_and_open_page
     fill_in 'Email', with: '000@gmail.com'
     fill_in 'Password', with: '000@gmail.com'
     # ログインボタンをクリックする
     click_on 'Log in'
     # tasks_pathにvisitする（タスク一覧ページに遷移する）
-
     visit tasks_path
-    # visitした（到着した）expect(page)に（タスク一覧ページに）「testtesttest」「samplesample」という文字列が
-    # have_contentされているか？（含まれているか？）ということをexpectする（確認・期待する）テストを書いている
-    expect(page).to have_content '名前'
+    expect(page).to have_content '未完了'
     expect(page).to have_content 'タイトル'
   end
 
