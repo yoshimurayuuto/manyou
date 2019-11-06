@@ -213,6 +213,6 @@ ja:
       short: "%m/%d %H:%M"
     pm: 午後
   view:
-    name: "名前"
+    content: "内容"
 
   # view:

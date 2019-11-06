@@ -19,7 +19,7 @@ describe 'Users' do
   # task = Task.new(title: "9", status: 1)
   # context "search" do
   scenario 'ログインする' do
-    visit root_path
+    visit new_session_path
     # ログインフォームにEmailとパスワードを入力する
     fill_in 'Email', with: '000@gmail.com'
     fill_in 'Password', with: '000@gmail.com'
