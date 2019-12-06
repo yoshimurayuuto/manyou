@@ -44,7 +44,7 @@ RSpec.feature "タスク管理機能", type: :feature do
     fill_in 'Email', with: '000@gmail.com'
     fill_in 'Password', with: '000@gmail.com'
     click_on 'Log in'
-    visit task_path(id: @task.id)
+    visit task_path(@task.id)
     expect(page).to have_content 'ブログ詳細画面'
     expect(page).to have_content 'ブログ詳細画面'
   end

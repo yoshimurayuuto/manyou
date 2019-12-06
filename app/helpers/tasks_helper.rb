@@ -6,5 +6,5 @@ module TasksHelper
   def status_format(status)
     t(status.presence) || t(:undefined)
   end
-  
+
 end

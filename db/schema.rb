@@ -41,7 +41,6 @@ ActiveRecord::Schema.define(version: 2019_11_04_025825) do
     t.datetime "expiration_date"
     t.string "status", default: "未着手", null: false
     t.integer "priority"
-    t.string "label"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"

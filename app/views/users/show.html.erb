@@ -1,3 +1,11 @@
 <h1><%= @user.name %>のページ</h1>
 
 <p>メールアドレス: <%= @user.email %></p>
+
+
+<% @user.tasks.each do |a| %>
+
+  <p>タイトル:<%= a.title %></p>
+  <p>内容:<%= a.content %></p>
+
+<% end %>

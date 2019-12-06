@@ -12,7 +12,7 @@
     </div>
   <% end %>
 <%# <%= form.select :status, [['未完了', '未完了'], ['未着手', '未着手'], ['完了', '完了']], {include_blank: 'タスク管理'}, class: 'Task' %> %>
-<%= form.select :status, ["未完了","未着手","完了"], {include_blank: 'タスク管理'}, class: 'Task' %>
+<%= form.select :status, ["未完了","未着手","完了"], include_blank: "タスク管理", selected: "", class: 'task'%>
 <%= form.select :priority, ["高","中","低"], {include_blank: '優先順位'}, class: 'Task' %>
 
     <div class="task_title">
