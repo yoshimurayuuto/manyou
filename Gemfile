@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 gem 'bcrypt', '3.1.11'
 ruby '2.6.5'
-gem 'kaminari', '~> 0.17.0'
+gem 'kaminari', '~> 1.2.1'
 gem 'ransack'
 gem 'enum_help', '~> 0.0.15'
 gem 'rails', '~> 5.2.3'
